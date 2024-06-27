@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Video Games</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="card.css" rel="stylesheet">
+    <script type="module">
+        //import { gamesArray } from "./games-data.js";
+
+        async function getGamesData() {
+            const response = await fetch("http://localhost:3000/games");
+             const games = await response.json();
+             return games;
+        }
+
+        function populateGameTemplate(game) {
+            const template = document.getElementById("card-template").content.cloneNode(true);
+            template.querySelector(".card-img-top").src = game.thumbnail;
+            template.querySelector(".card-title").innerText = game.title;
+            template.querySelector(".card-text").innerText = game.short_description;
+            template.querySelector(".game-url").href = game.game_url;
+            return template;
+        }
+
+        function getGamesHtml(games) {
+            let gamesHtml = [];
+            for(let game of games) {
+                const gameHtml = populateGameTemplate(game);
+                gamesHtml.push(gameHtml);
+            }
+            return gamesHtml;
+        }
+
+        window.onload = async function () {
+            const gamesArray = await getGamesData();
+            const gamesHtml = getGamesHtml(gamesArray);
+            const gamesContainer = document.querySelector("#games-container");
+            gamesHtml.forEach(gameHtml => {
+                gamesContainer.appendChild(gameHtml);
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Play Video Games</h1>
+    </header>
+
+    <template id="card-template">
+        <div class="card">
+            <img class="card-img-top" src="https://www.freetogame.com/g/540/thumbnail.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Overwatch</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a class="game-url btn-red-gradient" href="#" class="btn btn-success">Play Game</a>
+            </div>
+        </div>
+    </template>
+
+    <section class="content">
+        <div id="games-container" class="game-cards flex-container">
+
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "API documentation for Game model",
+      "version": "1.0.0",
+      "title": "Game API"
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/games": {
+        "get": {
+          "summary": "Get all games",
+          "description": "Retrieve a list of all games",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Game"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new game",
+          "description": "Create a new game entry",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "game",
+              "description": "Game object that needs to be added",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Game"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Game created successfully"
+            }
+          }
+        }
+      },
+      "/games/{gameid}": {
+        "delete": {
+          "summary": "Delete a game",
+          "description": "Delete a game by its ID",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "gameid",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID of the game to be deleted"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Game deleted successfully"
+            },
+            "404": {
+              "description": "Game not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a game",
+          "description": "Update an existing game by its ID",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "gameid",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID of the game to be updated"
+            },
+            {
+              "in": "body",
+              "name": "game",
+              "description": "Updated game object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Game"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Game updated successfully"
+            },
+            "404": {
+              "description": "Game not found"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Game": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 582
+          },
+          "title": {
+            "type": "string",
+            "example": "Tarisland"
+          },
+          "thumbnail": {
+            "type": "string",
+            "example": "https://www.freetogame.com/g/582/thumbnail.jpg"
+          },
+          "short_description": {
+            "type": "string",
+            "example": "A cross-platform MMORPG developed by Level Infinite and Published by Tencent."
+          },
+          "game_url": {
+            "type": "string",
+            "example": "https://www.freetogame.com/open/tarisland"
+          },
+          "genre": {
+            "type": "string",
+            "example": "MMORPG"
+          },
+          "platform": {
+            "type": "string",
+            "example": "PC (Windows)"
+          },
+          "publisher": {
+            "type": "string",
+            "example": "Tencent"
+          },
+          "developer": {
+            "type": "string",
+            "example": "Level Infinite"
+          },
+          "release_date": {
+            "type": "string",
+            "example": "2024-06-22"
+          },
+          "freetogame_profile_url": {
+            "type": "string",
+            "example": "https://www.freetogame.com/tarisland"
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,33 @@
+body {
+    margin: 0px;
+}
+
+header {
+    background: #d14121;
+    background: linear-gradient(95deg, #d14121 40%, orange 100%);
+    padding: 20px;
+    text-align: center;
+}
+
+header > h1 {
+    color: white;
+}
+
+.content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.btn-red-gradient {
+    background: #d14121;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
