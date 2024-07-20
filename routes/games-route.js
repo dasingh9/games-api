@@ -10,8 +10,16 @@ router.get("/", (req, res) => {
     gamesController.getGames(req, res);
 });
 
+router.get("/:id", (req, res) => {
+    gamesController.getGameById(req, res);
+});
+
 router.post('/', (req, res) => {
     gamesController.createGame(req, res);
+});
+
+router.put('/', (req, res) => {
+    gamesController.updateGame(req, res);
 });
 
 router.delete('/:id', (req, res) => {
