@@ -11,7 +11,7 @@
         //import { gamesArray } from "./games-data.js";
 
         async function getGamesData() {
-            const response = await fetch("http://localhost:3000/games");
+            const response = await fetch("/api/games");
              const games = await response.json();
              return games;
         }

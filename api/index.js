@@ -3,7 +3,7 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const gamesRoute = require("./routes/games-route.js")
 
-swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('./swagger.json');
 
 const app = express()
 app.use(express.json());
@@ -16,10 +16,12 @@ app.use(
 app.use('/', express.static('public'));
 
 
-app.use("/games", gamesRoute);
+app.use("/api/games", gamesRoute);
 
 //Start Web Server
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
  console.log(`My example app listening at http://localhost:${port}`);
 })
+
+module.exports = app;
