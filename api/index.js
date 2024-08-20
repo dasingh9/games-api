@@ -19,7 +19,7 @@ app.use('/', express.static('public'));
 app.use("/api/games", gamesRoute);
 
 //Start Web Server
-const port = 3001;
+const port = 3000;
 app.listen(port, () => {
  console.log(`My example app listening at http://localhost:${port}`);
 })
